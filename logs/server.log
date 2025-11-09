@@ -1,7 +1,24 @@
 INFO:     Will watch for changes in these directories: ['/home/workspace']
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [121] using StatReload
-INFO:     Started server process [123]
+INFO:     Started reloader process [300] using StatReload
+INFO:     Started server process [302]
 INFO:     Waiting for application startup.
+Seeding challenges failed: Error=13, Details='Response status code does not indicate success: Forbidden (403); Substatus: 3090; ActivityId: ab3f602c-6ebe-4cd8-a274-87e9fd6329d3; Reason: ({"code":"Forbidden","message":"Message: {\"Errors\":[\"Database / Collection Count Quota exceeded: Maximum number of 'Database' per account exceeded. Current configured quota 1000. Learn more https://aka.ms/cosmosdbquota\"]}\r\nActivityId: ab3f602c-6ebe-4cd8-a274-87e9fd6329d3, Request URI: /apps/14dfba39-4cfb-45be-9085-2849d51e49a6/services/4b30676d-032f-4482-841c-bfe3300b661a/partitions/7c6a25d7-bb0c-434b-9260-f775eda47607/replicas/134052439115800593p, RequestStats: , SDK: Microsoft.Azure.Documents.Common/2.14.0"}
+RequestUri: https://developer-platform-user-db-31-uksouth.documents.azure.com/dbs;
+RequestMethod: POST;
+Header: Authorization Length: 84;
+Header: x-ms-date Length: 29;
+Header: x-ms-cosmos-sdk-supportedcapabilities Length: 1;
+Header: x-ms-activity-id Length: 36;
+Header: Cache-Control Length: 8;
+Header: User-Agent Length: 145;
+Header: x-ms-cosmos-apitype Length: 7;
+Header: x-ms-version Length: 10;
+Header: Accept Length: 16;
+Header: x-ms-cosmos-compute-hop-count Length: 1;
+Header: x-ms-gateway-use-mtls Length: 1;
+Header: traceparent Length: 55;
+Header: tracestate Length: 6;
+, Request URI: /dbs, RequestStats: Microsoft.Azure.Cosmos.Tracing.TraceData.ClientSideRequestStatisticsTraceDatum, SDK: Windows/10.0.20348 cosmos-netstandard-sdk/3.18.0);, full error: {'ok': 0.0, 'errmsg': 'Error=13, Details=\'Response status code does not indicate success: Forbidden (403); Substatus: 3090; ActivityId: ab3f602c-6ebe-4cd8-a274-87e9fd6329d3; Reason: ({"code":"Forbidden","message":"Message: {\\"Errors\\":[\\"Database / Collection Count Quota exceeded: Maximum number of \'Database\' per account exceeded. Current configured quota 1000. Learn more https://aka.ms/cosmosdbquota\\"]}\\r\\nActivityId: ab3f602c-6ebe-4cd8-a274-87e9fd6329d3, Request URI: /apps/14dfba39-4cfb-45be-9085-2849d51e49a6/services/4b30676d-032f-4482-841c-bfe3300b661a/partitions/7c6a25d7-bb0c-434b-9260-f775eda47607/replicas/134052439115800593p, RequestStats: , SDK: Microsoft.Azure.Documents.Common/2.14.0"}\r\nRequestUri: https://developer-platform-user-db-31-uksouth.documents.azure.com/dbs;\r\nRequestMethod: POST;\r\nHeader: Authorization Length: 84;\r\nHeader: x-ms-date Length: 29;\r\nHeader: x-ms-cosmos-sdk-supportedcapabilities Length: 1;\r\nHeader: x-ms-activity-id Length: 36;\r\nHeader: Cache-Control Length: 8;\r\nHeader: User-Agent Length: 145;\r\nHeader: x-ms-cosmos-apitype Length: 7;\r\nHeader: x-ms-version Length: 10;\r\nHeader: Accept Length: 16;\r\nHeader: x-ms-cosmos-compute-hop-count Length: 1;\r\nHeader: x-ms-gateway-use-mtls Length: 1;\r\nHeader: traceparent Length: 55;\r\nHeader: tracestate Length: 6;\r\n, Request URI: /dbs, RequestStats: Microsoft.Azure.Cosmos.Tracing.TraceData.ClientSideRequestStatisticsTraceDatum, SDK: Windows/10.0.20348 cosmos-netstandard-sdk/3.18.0);', 'code': 13, 'codeName': 'Unauthorized'}
 INFO:     Application startup complete.
-INFO:     172.20.0.1:33868 - "HEAD / HTTP/1.1" 405 Method Not Allowed
+INFO:     172.20.0.1:53622 - "HEAD / HTTP/1.1" 405 Method Not Allowed

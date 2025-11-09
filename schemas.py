@@ -1,48 +1,27 @@
-"""
-Database Schemas
-
-Define your MongoDB collection schemas here using Pydantic models.
-These schemas are used for data validation in your application.
-
-Each Pydantic model represents a collection in your database.
-Model name is converted to lowercase for the collection name:
-- User -> "user" collection
-- Product -> "product" collection
-- BlogPost -> "blogs" collection
-"""
-
 from pydantic import BaseModel, Field
-from typing import Optional
+from typing import Optional, List
 
-# Example schemas (replace with your own):
+# Collections:
+# - userprofile
+# - challenge
+# - submission
 
-class User(BaseModel):
-    """
-    Users collection schema
-    Collection name: "user" (lowercase of class name)
-    """
-    name: str = Field(..., description="Full name")
-    email: str = Field(..., description="Email address")
-    address: str = Field(..., description="Address")
-    age: Optional[int] = Field(None, ge=0, le=120, description="Age in years")
-    is_active: bool = Field(True, description="Whether user is active")
+class UserProfile(BaseModel):
+    username: str = Field(..., min_length=2, max_length=30, description="Unique handle")
+    solved: List[str] = Field(default_factory=list, description="Challenge slugs solved")
+    unlocked_sections: List[str] = Field(default_factory=list, description="Unlocked portfolio sections")
 
-class Product(BaseModel):
-    """
-    Products collection schema
-    Collection name: "product" (lowercase of class name)
-    """
-    title: str = Field(..., description="Product title")
-    description: Optional[str] = Field(None, description="Product description")
-    price: float = Field(..., ge=0, description="Price in dollars")
-    category: str = Field(..., description="Product category")
-    in_stock: bool = Field(True, description="Whether product is in stock")
+class Challenge(BaseModel):
+    slug: str = Field(..., min_length=3, max_length=50, description="Unique identifier, e.g., enum-01")
+    title: str = Field(..., description="Display title")
+    concept: str = Field(..., description="Category like Enumeration/OSINT/SQLi")
+    section: str = Field(..., description="Portfolio section unlocked: about/skills/projects/certifications")
+    difficulty: str = Field(default="easy", description="easy | medium | hard")
+    flag_hash: str = Field(..., description="SHA256 of the flag (ctf{...})")
+    is_active: bool = Field(default=True)
 
-# Add your own schemas here:
-# --------------------------------------------------
-
-# Note: The Flames database viewer will automatically:
-# 1. Read these schemas from GET /schema endpoint
-# 2. Use them for document validation when creating/editing
-# 3. Handle all database operations (CRUD) directly
-# 4. You don't need to create any database endpoints!
+class Submission(BaseModel):
+    username: str = Field(...)
+    challenge_slug: str = Field(...)
+    correct: bool = Field(default=False)
+    provided_hash: Optional[str] = None
